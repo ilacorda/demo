@@ -14,14 +14,19 @@ import javax.persistence.*
         TypeDef(name = "json", typeClass = JsonStringType::class),
         TypeDef(name = "jsonb", typeClass = JsonBinaryType::class)
 )
-
 data class SampleEntity (
     @Id @GeneratedValue
-    val id: Long,
-    val name: String,
+    val id: Long?,
+    val name: String?,
+
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    var data: SamplePojo
-    ) : AbstractJpaPersistable<Long>() {
+    var data: Map<String, Any>?
+) {
 
+    /**
+     * Dependently on use-case this can be done differently:
+     * https://stackoverflow.com/questions/37873995/how-to-create-empty-constructor-for-data-class-in-kotlin-android
+     */
+    constructor(): this(null, null, null)
 }
