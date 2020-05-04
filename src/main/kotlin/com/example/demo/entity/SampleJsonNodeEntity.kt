@@ -1,6 +1,6 @@
 package com.example.demo.entity
 
-import com.example.demo.pojo.SamplePojo
+import com.fasterxml.jackson.databind.JsonNode
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType
 import com.vladmihalcea.hibernate.type.json.JsonStringType
 import org.hibernate.annotations.Type
@@ -14,14 +14,14 @@ import javax.persistence.*
         TypeDef(name = "json", typeClass = JsonStringType::class),
         TypeDef(name = "jsonb", typeClass = JsonBinaryType::class)
 )
-data class SampleEntity (
-    @Id @GeneratedValue
-    val id: Long?,
-    val name: String?,
+data class SampleJsonNodeEntity (
+        @Id @GeneratedValue
+        val id: Long?,
+        val name: String?,
 
-    @Type(type = "jsonb")
-    @Column(columnDefinition = "jsonb")
-    var data: Map<String, Any>?
+        @Type(type = "jsonb")
+        @Column(columnDefinition = "jsonb")
+        var data: JsonNode?
 ) {
 
     /**

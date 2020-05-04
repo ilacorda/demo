@@ -1,5 +1,8 @@
 package com.example.demo.pojo
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class SamplePojo(
         val payload: String,
         val flag: Boolean
