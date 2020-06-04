@@ -1,5 +1,3 @@
-##Demo to work with Hibernate Types
-
 This repository shows the use of [hibernate-types](https://github.com/vladmihalcea/high-performance-java-persistence)
 and in particular the mapping of JSONB data type in Postgres with Hibernate and JPA. 
 
